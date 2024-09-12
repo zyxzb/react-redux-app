@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+
 import { Input } from '@/components/ui/input';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setFilter } from './filterSlice';
@@ -13,10 +14,9 @@ const FilterInputs = () => {
   };
 
   return (
-    <div className='gap-4 flex flex-col sm:flex-row'>
+    <section className='flex flex-col gap-4 sm:flex-row'>
       {Object.keys(filters).map((filterKey) => (
         <Input
-          className='flex-1'
           key={filterKey}
           name={filterKey}
           value={filters[filterKey as keyof typeof filters]}
@@ -24,7 +24,7 @@ const FilterInputs = () => {
           placeholder={`Filter by ${filterKey}`}
         />
       ))}
-    </div>
+    </section>
   );
 };
 

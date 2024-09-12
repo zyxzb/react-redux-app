@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { selectDarkMode, toggleDarkMode } from './darkModeSlice';
 
