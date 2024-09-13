@@ -2,15 +2,20 @@ import { ChangeEvent } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { setFilter } from './filterSlice';
+import { setFilter, resetFilters } from './filterSlice';
+import { Button } from '@/components/ui/button';
 
-const FilterInputs = () => {
+const FilterSection = () => {
   const dispatch = useAppDispatch();
   const filters = useAppSelector((state) => state.filters);
 
   const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     dispatch(setFilter({ field: name as keyof typeof filters, value }));
+  };
+
+  const handleFiltersReset = () => {
+    dispatch(resetFilters());
   };
 
   return (
@@ -24,8 +29,9 @@ const FilterInputs = () => {
           placeholder={`Filter by ${filterKey}`}
         />
       ))}
+      <Button onClick={handleFiltersReset}>Reset filters</Button>
     </section>
   );
 };
 
-export default FilterInputs;
+export default FilterSection;
